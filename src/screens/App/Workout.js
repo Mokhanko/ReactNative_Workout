@@ -7,9 +7,9 @@ import Topbar from '../../components/TopBar';
 import { setExerciseVisibility } from '../../reducers/ui';
 import WorkoutList from '../../components/WorkouList';
 import ExerciseModal from '../../components/ExeciseModal';
-import ExerciseList from '../../components/ExerciseList';
 
-const Workout = ({ currentWorkOut, setModalVisibility, execiseModal }) => (
+
+const Workout = ({ currentWorkOut, exercises, setModalVisibility, execiseModal }) => (
   <View style={styles.container}>
     <Topbar style={styles.topbar}>
       <Text style={styles.topbarText}>Current Workout</Text>
@@ -21,6 +21,7 @@ const Workout = ({ currentWorkOut, setModalVisibility, execiseModal }) => (
       />
     </View>
     <ExerciseModal
+      exercises={exercises}
       execiseModal={execiseModal}
       setModalVisibility={setModalVisibility}
     />
@@ -53,14 +54,14 @@ export default compose(
   connect(
     state => ({
       currentWorkout: state.currWork,
-      execiseModal: state.ui.exerciseModal
+      execiseModal: state.ui.exerciseModal,
+      exercises: state.exercises
     }),
     {
       setExerciseVisibility
     }
   ),
   withState('currentWorkOut', 'setCurrWorkout', []),
-  withState('exercises', 'setExercises', []),
   withHandlers({
     setModalVisibility: props => event => {
       event.preventDefault();

@@ -10,7 +10,7 @@ import {
 const { width } = Dimensions.get('window');
 
 const WorkoutList = ({ currentWorkOut = [], setModalVisibility }) => (
-  <View style={styles.addSomeExercises}>
+  <View style={styles.addSomeExecercises}>
     <Text style={styles.bigText}>add some exercises</Text>
     <TouchableOpacity
       onPress={e => setModalVisibility(e)}

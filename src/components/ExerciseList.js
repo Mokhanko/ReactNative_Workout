@@ -1,13 +1,18 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { compose, withState, withHandlers } from 'recompose';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Topbar from './TopBar';
 
-const ExerciseList = () => (
-  <View style={{ flex: 1, backgroundColor: 'grey' }}>
-    <Topbar style={{ padding: 0 }}>
-    </Topbar>
-  </View>
-);
+const ExerciseList = props => {
+  return (
+    <View>
+      <FlatList
+        data={props.exercises}
+        renderItem={({ item }) => <Text>{item.name}</Text>}
+      />
+    </View>
+  );
+};
 
 export default ExerciseList;
